@@ -7,6 +7,7 @@ import { AlertTriangle, Loader } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Id } from '../../../../../../convex/_generated/dataModel'
 import { toast } from 'sonner'
+import { Conversation } from './conversation'
 
 const MemberIdPage = () => {
   const workspaceId = useWorkspaceId()
@@ -50,7 +51,11 @@ const MemberIdPage = () => {
     )
   }
 
-  return <div>{JSON.stringify(conversationId)}</div>
+  return (
+    <div>
+      <Conversation id={conversationId} />
+    </div>
+  )
 }
 
 export default MemberIdPage

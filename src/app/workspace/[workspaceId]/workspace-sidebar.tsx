@@ -12,12 +12,14 @@ import { WorkspaceHeader } from './workspace-header'
 import { SidebarItem } from './sidebar-item'
 import { useGetChannels } from '@/features/channels/api/use-get-channels'
 import { WorkspaceSection } from './workspace-section'
-import { useGetMember } from '@/features/members/api/use-get-members'
+import { useGetMembers } from '@/features/members/api/use-get-members'
 import { UserItem } from './user-item'
 import { useCreateChannelModal } from '@/features/channels/store/use-create-channel-modal'
 import { useChannelId } from '@/routes/use-channel-id'
+import { useMemberId } from '@/routes/use-member-id'
 
 export const WorkspaceSidebar = () => {
+  const memberId = useMemberId()
   const workspaceId = useWorkspaceId()
   const channelId = useChannelId()
   const { data: member, isLoading: memberLoading } = useCurrentMember({
@@ -29,7 +31,7 @@ export const WorkspaceSidebar = () => {
   const { data: channels, isLoading: channelsLoading } = useGetChannels({
     workspaceId,
   })
-  const { data: members, isLoading: membersLoading } = useGetMember({
+  const { data: members, isLoading: membersLoading } = useGetMembers({
     workspaceId,
   })
   const [_open, setOpen] = useCreateChannelModal()
@@ -84,6 +86,7 @@ export const WorkspaceSidebar = () => {
             id={item._id}
             label={item.user.name}
             image={item.user.image}
+            variant={item._id === memberId ? 'active' : 'default'}
           />
         ))}
       </WorkspaceSection>

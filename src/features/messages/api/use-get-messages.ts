@@ -8,10 +8,7 @@ interface UseGetMessagesProps {
   conversationId?: Id<'conversations'>
   parentMessageId?: Id<'messages'>
 }
-export type GetMessageReturnType = Exclude<
-  (typeof api.messages.get._returnType)['page'][number],
-  null
->[]
+export type GetMessageReturnType = (typeof api.messages.get._returnType)['page']
 
 export const useGetMessages = ({
   channelId,
