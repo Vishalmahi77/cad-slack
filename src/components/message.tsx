@@ -13,7 +13,7 @@ import { useDeleteMessage } from '@/features/messages/api/use-delete-message'
 import { useConfirm } from '@/hooks/use-confirm'
 import { useToggleReaction } from '@/features/reactions/api/use-toggle-reaction'
 import { Reactions } from './reactions'
-import { usePanel } from '@/hooks/use-panel'
+import { usePanel } from '@/routes/use-panel'
 
 const Renderer = dynamic(() => import('@/components/renderer'), { ssr: false })
 const Editor = dynamic(() => import('@/components/editor'), { ssr: false })

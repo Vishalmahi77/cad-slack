@@ -1,4 +1,4 @@
-import { useWorkspaceId } from '@/utils/use-workspace-id'
+import { useWorkspaceId } from '@/routes/use-workspace-id'
 import { Doc, Id } from '../../convex/_generated/dataModel'
 import { useCurrentMember } from '@/features/members/api/use-current-member'
 import { cn } from '@/lib/utils'
@@ -23,6 +23,7 @@ export const Reactions = ({ data, onChange }: ReactionsProps) => {
   if (data.length === 0 || !currentMemberId) {
     return null
   }
+
   return (
     <div className="flex items-center gap-1 mt-1 mb-1">
       {data.map((reaction) => (

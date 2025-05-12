@@ -3,7 +3,7 @@ import { Id } from '../../../../convex/_generated/dataModel'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
-import { useWorkspaceId } from '@/utils/use-workspace-id'
+import { useWorkspaceId } from '@/routes/use-workspace-id'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 const userItemVariants = cva(

@@ -8,7 +8,7 @@ import {
 import { useGetWorkspace } from '@/features/workspaces/api/use-get-workspace'
 import { useGetWorkspaces } from '@/features/workspaces/api/use-get-workspaces'
 import { useCreateWorkspaceModal } from '@/features/workspaces/store/use-create-workspace-modal'
-import { useWorkspaceId } from '@/utils/use-workspace-id'
+import { useWorkspaceId } from '@/routes/use-workspace-id'
 import { Loader, Plus } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 

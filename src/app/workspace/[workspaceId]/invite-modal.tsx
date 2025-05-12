@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/dialog'
 import { useNewJoinCode } from '@/features/workspaces/api/use-new-join-code'
 import { useConfirm } from '@/hooks/use-confirm'
-import { useWorkspaceId } from '@/utils/use-workspace-id'
+import { useWorkspaceId } from '@/routes/use-workspace-id'
 import { CopyIcon, RefreshCcw } from 'lucide-react'
 import { toast } from 'sonner'
 

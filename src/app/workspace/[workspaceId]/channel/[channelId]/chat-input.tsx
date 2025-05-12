@@ -1,7 +1,7 @@
 import { useCreateMessage } from '@/features/messages/api/use-create-message'
 import { useGenerateUploadUrl } from '@/features/upload/api/use-generate-upload-url'
-import { useChannelId } from '@/utils/use-channel-id'
-import { useWorkspaceId } from '@/utils/use-workspace-id'
+import { useChannelId } from '@/routes/use-channel-id'
+import { useWorkspaceId } from '@/routes/use-workspace-id'
 import dynamic from 'next/dynamic'
 import Quill from 'quill'
 import { useRef, useState } from 'react'
@@ -30,6 +30,7 @@ export const ChatInput = ({ placeholder }: ChatInputProps) => {
   const [editorKey, setEditorKey] = useState(0)
   const [isPending, setIsPending] = useState(false)
   const editorRef = useRef<Quill | null>(null)
+
   const handleSubmit = async ({
     body,
     image,

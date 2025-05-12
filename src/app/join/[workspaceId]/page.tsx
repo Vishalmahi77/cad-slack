@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { useGetWorkspaceInfo } from '@/features/workspaces/api/use-get-workspace-info'
 import { useJoin } from '@/features/workspaces/api/use-join'
-import { useWorkspaceId } from '@/utils/use-workspace-id'
+import { useWorkspaceId } from '@/routes/use-workspace-id'
 import { cn } from '@/lib/utils'
 import { Loader } from 'lucide-react'
 import Image from 'next/image'

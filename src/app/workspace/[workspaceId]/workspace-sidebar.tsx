@@ -1,6 +1,6 @@
 import { useCurrentMember } from '@/features/members/api/use-current-member'
 import { useGetWorkspace } from '@/features/workspaces/api/use-get-workspace'
-import { useWorkspaceId } from '@/utils/use-workspace-id'
+import { useWorkspaceId } from '@/routes/use-workspace-id'
 import {
   AlertTriangle,
   HashIcon,
@@ -15,7 +15,7 @@ import { WorkspaceSection } from './workspace-section'
 import { useGetMember } from '@/features/members/api/use-get-members'
 import { UserItem } from './user-item'
 import { useCreateChannelModal } from '@/features/channels/store/use-create-channel-modal'
-import { useChannelId } from '@/utils/use-channel-id'
+import { useChannelId } from '@/routes/use-channel-id'
 
 export const WorkspaceSidebar = () => {
   const workspaceId = useWorkspaceId()

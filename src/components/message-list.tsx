@@ -4,7 +4,7 @@ import { Message } from './message'
 import { ChannelHero } from './channel-hero'
 import { useState } from 'react'
 import { Id } from '../../convex/_generated/dataModel'
-import { useWorkspaceId } from '@/utils/use-workspace-id'
+import { useWorkspaceId } from '@/routes/use-workspace-id'
 import { useCurrentMember } from '@/features/members/api/use-current-member'
 import { Loader } from 'lucide-react'
 

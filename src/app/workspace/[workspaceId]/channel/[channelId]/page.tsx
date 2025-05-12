@@ -1,7 +1,7 @@
 'use client'
 
 import { useGetChannel } from '@/features/channels/api/use-get-channel'
-import { useChannelId } from '@/utils/use-channel-id'
+import { useChannelId } from '@/routes/use-channel-id'
 import { Loader, TriangleAlert } from 'lucide-react'
 import { Header } from './header'
 import { ChatInput } from './chat-input'
@@ -11,7 +11,6 @@ import { MessageList } from '@/components/message-list'
 const ChannelIdPage = () => {
   const channelId = useChannelId()
   const { results, status, loadMore } = useGetMessages({ channelId })
-  console.log({ results })
   const { data: channel, isLoading: channelLoading } = useGetChannel({
     id: channelId,
   })

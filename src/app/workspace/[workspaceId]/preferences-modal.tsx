@@ -12,7 +12,7 @@ import { Input } from '@/components/ui/input'
 import { useRemoveWorkspace } from '@/features/workspaces/api/use-remove-workspace'
 import { useUpdateWorkspace } from '@/features/workspaces/api/use-update-workspace'
 import { useConfirm } from '@/hooks/use-confirm'
-import { useWorkspaceId } from '@/utils/use-workspace-id'
+import { useWorkspaceId } from '@/routes/use-workspace-id'
 import { Trash2Icon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
