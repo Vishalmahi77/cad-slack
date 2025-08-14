@@ -118,9 +118,9 @@ const Editor = ({
       }
     }
   }, [innerRef])
-  const onEmojiSelect = (emoji: any) => {
+  const onEmojiSelect = (emojiValue: string) => {
     const quill = quillRef.current
-    quill?.insertText(quill?.getSelection()?.index || 0, emoji.emoji)
+    quill?.insertText(quill?.getSelection()?.index || 0, emojiValue)
   }
   const isEmpty = text.replace(/<(.|\n)*?>/g, '').trim().length === 0
   const toggleToolbar = () => {

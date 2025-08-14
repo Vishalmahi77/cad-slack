@@ -14,6 +14,7 @@ import { useConfirm } from '@/hooks/use-confirm'
 import { useToggleReaction } from '@/features/reactions/api/use-toggle-reaction'
 import { Reactions } from './reactions'
 import { usePanel } from '@/routes/use-panel'
+import { ThreadBar } from './thread-bar'
 
 const Renderer = dynamic(() => import('@/components/renderer'), { ssr: false })
 const Editor = dynamic(() => import('@/components/editor'), { ssr: false })
@@ -41,6 +42,7 @@ interface MessageProps {
   threadCount?: number
   threadImage?: string
   threadTimestamp?: number
+  threadName?: string
 }
 const formatFullTime = (date: Date) => {
   return `${isToday(date) ? 'Today' : isYesterday(date) ? 'Yesterday' : format(date, 'MMM d, yyyy')} at ${format(date, 'h:mm:ss a')}`
@@ -63,6 +65,7 @@ export const Message = ({
   threadCount,
   threadImage,
   threadTimestamp,
+  threadName,
 }: MessageProps) => {
   const [ConfirmDialog, confirm] = useConfirm(
     'Delete message',
@@ -73,10 +76,10 @@ export const Message = ({
     useUpdateMessage()
   const { mutate: deleteMessage, isPending: isDeletingMessage } =
     useDeleteMessage()
-  const isPending = isUpdatingMessage
   const { mutate: toggleReaction, isPending: isToggleReaction } =
     useToggleReaction()
-  const { parentMessageId, onOpenMessage, onClose } = usePanel()
+  const { parentMessageId, onOpenMessage, onClose, onOpenProfile } = usePanel()
+  const isPending = isUpdatingMessage || isToggleReaction
   const handleReaction = (value: string) => {
     toggleReaction(
       { messageId: id, value },
@@ -159,6 +162,13 @@ export const Message = ({
                   </span>
                 ) : null}
                 <Reactions data={reactions} onChange={handleReaction} />
+                <ThreadBar
+                  count={threadCount}
+                  image={threadImage}
+                  timestamp={threadTimestamp}
+                  name={threadName}
+                  onClick={() => onOpenMessage(id)}
+                />
               </div>
             )}
           </div>
@@ -189,7 +199,11 @@ export const Message = ({
         )}
       >
         <div className="flex items-start gap-2">
-          <button aria-label="Author Avatar" className="flex-shrink-0">
+          <button
+            aria-label="Author Avatar"
+            className="flex-shrink-0"
+            onClick={() => onOpenProfile(memberId)}
+          >
             <Avatar>
               <AvatarImage
                 className="rounded-full border-2 border-gray-300 shadow-sm"
@@ -213,7 +227,7 @@ export const Message = ({
               <div className="text-sm">
                 <button
                   className="font-bold text-primary hover:underline"
-                  onClick={() => {}}
+                  onClick={() => onOpenProfile(memberId)}
                 >
                   {authorName}
                 </button>
@@ -244,6 +258,12 @@ export const Message = ({
                     </span>
                   ) : null}
                   <Reactions data={reactions} onChange={handleReaction} />
+                  <ThreadBar
+                    count={threadCount}
+                    image={threadImage}
+                    timestamp={threadTimestamp}
+                    name={threadName}
+                  />
                 </div>
               )}
             </div>

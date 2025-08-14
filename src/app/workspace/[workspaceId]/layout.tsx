@@ -11,14 +11,16 @@ import { usePanel } from '@/routes/use-panel'
 import { Loader } from 'lucide-react'
 import { Id } from '../../../../convex/_generated/dataModel'
 import { Thread } from '@/features/messages/components/thread'
+import { Profile } from './member/components/profile'
 
 interface WorkspaceIdLayoutProps {
   children: React.ReactNode
 }
 
 const WorkspaceIdLayout = ({ children }: WorkspaceIdLayoutProps) => {
-  const { parentMessageId, onClose, onOpenMessage } = usePanel()
-  const showPanel = !!parentMessageId
+  const { parentMessageId, onClose, profileMemberId } = usePanel()
+
+  const showPanel = !!parentMessageId || !!profileMemberId
   return (
     <div className="h-full">
       <Toolbar />
@@ -29,9 +31,10 @@ const WorkspaceIdLayout = ({ children }: WorkspaceIdLayoutProps) => {
           autoSaveId="ca-workspace-layout"
         >
           <ResizablePanel
-            defaultSize={20}
-            minSize={11}
-            className="bg-[#5E2C5F]"
+            defaultSize={16}
+            minSize={15}
+            maxSize={24}
+            className="bg-[#2c3c5f]"
           >
             <WorkspaceSidebar />
           </ResizablePanel>
@@ -40,10 +43,15 @@ const WorkspaceIdLayout = ({ children }: WorkspaceIdLayoutProps) => {
           {showPanel && (
             <>
               <ResizableHandle withHandle />
-              <ResizablePanel minSize={20} defaultSize={29}>
+              <ResizablePanel minSize={20} defaultSize={29} maxSize={34}>
                 {parentMessageId ? (
                   <Thread
                     messageId={parentMessageId as Id<'messages'>}
+                    onClose={onClose}
+                  />
+                ) : profileMemberId ? (
+                  <Profile
+                    memberId={profileMemberId as Id<'members'>}
                     onClose={onClose}
                   />
                 ) : (

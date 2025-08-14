@@ -3,11 +3,14 @@ import { Avatar, AvatarFallback } from './ui/avatar'
 import { AvatarImage } from '@radix-ui/react-avatar'
 
 interface ConversationHeroProps {
-  name: string
-  image: string
+  name?: string
+  image?: string
 }
 
-export const ConversationHero = ({ name, image }: ConversationHeroProps) => {
+export const ConversationHero = ({
+  name = 'Member',
+  image,
+}: ConversationHeroProps) => {
   const avatarFallback = name.charAt(0).toUpperCase()
   return (
     <div className="mt-[88px] mx-5 mb-4">

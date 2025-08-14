@@ -146,6 +146,7 @@ export const Thread = ({ messageId, onClose }: ThreadProps) => {
       </div>
     )
   }
+
   return (
     <div className="h-full flex flex-col">
       <div className="flex justify-between items-center h-[49px] px-4 border-b">

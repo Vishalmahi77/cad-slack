@@ -15,6 +15,7 @@ interface MessageListProps {
   memberName?: string
   memberImage?: string
   channelName?: string
+  threadName?: string
   channelCreationTime?: number
   variant?: 'channel' | 'thread' | 'conversation'
   data: GetMessageReturnType | undefined
@@ -34,6 +35,7 @@ export const MessageList = ({
   memberImage,
   memberName,
   channelName,
+  threadName,
   channelCreationTime,
   variant = 'channel',
   data,
@@ -91,6 +93,7 @@ export const MessageList = ({
                 threadCount={message.threadCount}
                 threadImage={message.threadImage}
                 threadTimestamp={message.threadTimestamp}
+                threadName={message.threadName}
                 isEditing={editingId === message._id}
                 isCompact={isCompact}
                 hideThreadButton={variant === 'thread'}
@@ -129,7 +132,7 @@ export const MessageList = ({
       {variant === 'channel' && channelName && channelCreationTime && (
         <ChannelHero name={channelName} creationTime={channelCreationTime} />
       )}
-      {variant === 'conversation' && memberName && memberImage && (
+      {variant === 'conversation' && (
         <ConversationHero name={memberName} image={memberImage} />
       )}
     </div>

@@ -52,7 +52,7 @@ const MemberIdPage = () => {
   }
 
   return (
-    <div>
+    <div className="w-full h-full">
       <Conversation id={conversationId} />
     </div>
   )

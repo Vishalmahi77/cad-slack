@@ -61,7 +61,7 @@ export const WorkspaceSwitcher = () => {
           className="cursor-pointer"
           onClick={() => setOpen(true)}
         >
-          <div className="size-9 relative overflow-hidden bg-[#d292f02c] text-slate-800 font-semibold text-lg rounded-md flex items-center justify-center mr-2">
+          <div className="size-9 relative overflow-hidden bg-[#92abf02c] text-slate-800 font-semibold text-lg rounded-md flex items-center justify-center mr-2">
             <Plus />
           </div>
           Create a new workspace
